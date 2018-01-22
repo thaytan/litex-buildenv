@@ -337,12 +337,12 @@ bios-flash: $(BIOS_FILE) bios-flash-$(PLATFORM)
 # We can run the TFTP server as the user if port >= 1024
 # otherwise we need to run as root using sudo
 
-ATFTPD:=$(shell which atftpd)
+ATFTPD:=$(shell which atftpd 2> /dev/null)
 ifeq ($(ATFTPD),)
 ATFTPD:=/usr/sbin/atftpd
 endif
 
-IN_TFTPD:=$(shell which in.tfptd)
+IN_TFTPD:=$(shell which in.tfptd 2> /dev/null)
 ifeq ($(IN_TFTPD),)
 IN_TFTPD:=/usr/sbin/in.tftpd
 endif
